@@ -20,7 +20,7 @@ onboard: build-onboard
 	docker run -v `pwd`/config/openclaw:/home/app/.openclaw --rm -it onboard
 
 gateway: build-gateway
-	docker run -p18789:18789 -v `pwd`/config/openclaw:/home/app/.openclaw --rm -it gateway
+	docker run -p127.0.0.1:18789:18789 -v `pwd`/config/openclaw:/home/app/.openclaw --rm -it gateway
 
 compose: build-onboard build-gateway
 	docker compose up
