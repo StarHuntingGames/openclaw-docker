@@ -1,3 +1,5 @@
+VERSION = 2026.2.24
+
 .DEFAULT_GOAL := onboard
 .PHONY: onboard
 all: build-nodejs build-openclaw build-onboard build-gateway
@@ -6,7 +8,7 @@ build-nodejs:
 	docker build -t nodejs -f Dockerfile.nodejs .
 
 build-openclaw: build-nodejs
-	docker build --build-arg VERSION=latest -t openclaw -f Dockerfile.openclaw .
+	docker build --build-arg VERSION=$(VERSION) -t openclaw -f Dockerfile.openclaw .
 
 build-onboard: build-openclaw
 	docker build -t onboard -f Dockerfile.onboard .
