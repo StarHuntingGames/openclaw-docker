@@ -8,7 +8,6 @@ ENV GID=$GID
 ENV USER=$USER
 ENV VERSION=$VERSION
 
-RUN sudo useradd -r -m -o -u $UID -g $GID -s /bin/bash clawshell
 USER $USER
 RUN cd /home/node && . ./nodeenv/bin/activate && npm config set prefix /home/node && npm install -g openclaw@$VERSION
 
