@@ -1,0 +1,17 @@
+services:
+  openclaw-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    image: openclaw
+    container_name: openclaw-gateway
+    command: ["gateway","run","--bind","lan","--port","18789"]
+    ports:
+      - "18789:18789"
+    environment:
+      UID: 1000
+      GID: 1000
+      USER: app
+    volumes:
+      - ./config/openclaw:/home/app/.openclaw
+    restart: unless-stopped

@@ -1,0 +1,11 @@
+FROM openclaw
+ARG UID=1000
+ARG GID=1000
+ARG USER=app
+ENV UID=$UID
+ENV GID=$GID
+ENV USER=$USER
+
+USER $USER
+ENV PATH="/home/node/nodeenv/bin:$PATH"
+ENTRYPOINT ["/home/node/nodeenv/bin/openclaw", "gateway", "run", "--bind", "lan", "--port", "18789"]
